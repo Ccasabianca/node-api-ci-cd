@@ -8,3 +8,11 @@ describe('Test the root path', () => {
         expect(response.text).toBe('Hello World!');
     });
 });
+
+describe('Test the /status path', () => {
+    test('It should respond with JSON containing API status', async () => {
+        const response = await request(app).get('/status');
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual({ status: 'API is running' });
+    });
+});
